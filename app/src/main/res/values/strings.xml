@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">026_FinalProjectPAM</string>
+    <string name="info_motor_button">Info Motor</string>
+    <string name="sewa_button">Sewa Motor</string>
 </resources>
