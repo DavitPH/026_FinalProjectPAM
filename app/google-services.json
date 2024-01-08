@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "324305559452",
+    "project_id": "penyewaan-motor",
+    "storage_bucket": "penyewaan-motor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:324305559452:android:871b12150efea0e37f7259",
+        "android_client_info": {
+          "package_name": "com.example.a026_finalprojectpam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTXwQprBUUB7k8ac0TJiQmiN6Wt5UqnGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
