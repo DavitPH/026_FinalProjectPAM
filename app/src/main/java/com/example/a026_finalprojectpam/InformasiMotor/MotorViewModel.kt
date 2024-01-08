@@ -59,7 +59,6 @@ class MotorViewModel(): ViewModel(){
         idMotor: String,
         context: Context,
         navController: NavController,
-        backToMotorScreen: () -> Unit
     )    = CoroutineScope(Dispatchers.IO).launch {
         val fireStoreRef = Firebase.firestore
             .collection("motor")
