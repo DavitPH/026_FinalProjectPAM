@@ -28,7 +28,7 @@ import com.example.a026_finalprojectpam.R
 import com.example.a026_finalprojectpam.ui.theme._026_FinalProjectPAMTheme
 
 @Composable
-fun HalamanHome(onNextButtonClicked1: () -> Unit,
+fun HomeScreen(onNextButtonClicked1: () -> Unit,
                 onNextButtonClicked2: () -> Unit)
 {
     val image = painterResource(id = R.drawable.logo_motor)
@@ -86,11 +86,12 @@ fun HalamanHome(onNextButtonClicked1: () -> Unit,
     }
 }
 
+
 @Preview(showBackground = true)
 @Composable
 fun PreviewHalamanHome() {
     _026_FinalProjectPAMTheme {
-        HalamanHome(onNextButtonClicked1 = {},
+        HomeScreen(onNextButtonClicked1 = {},
             onNextButtonClicked2 = {})
     }
 }
