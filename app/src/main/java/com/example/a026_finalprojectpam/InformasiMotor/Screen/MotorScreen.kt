@@ -37,5 +37,15 @@ fun MotorScreen(
         ) {
             Text(text = "Get Data Motor")
         }
+
+        // add user data Button
+        OutlinedButton(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                navController.navigate(route = Screens.AddDataMotorScreen.route)
+            }
+        ) {
+            Text(text = "Add User Data")
+        }
     }
 }
