@@ -2,10 +2,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -26,8 +28,6 @@ fun AuthenticationScreen(authViewModel: AuthViewModel = viewModel()) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
-    var showToastMessage by remember { mutableStateOf<String?>(null) }
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -35,24 +35,40 @@ fun AuthenticationScreen(authViewModel: AuthViewModel = viewModel()) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TextField(
+        OutlinedTextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Email") }
+            label = { Text("Email") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
         )
         Spacer(modifier = Modifier.height(8.dp))
-        TextField(
+        OutlinedTextField(
             value = password,
             onValueChange = { password = it },
             label = { Text("Password") },
-            visualTransformation = PasswordVisualTransformation()
+            visualTransformation = PasswordVisualTransformation(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { authViewModel.createUserWithEmailAndPassword(email, password) }) {
+        Button(
+            onClick = { authViewModel.createUserWithEmailAndPassword(email, password) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+        ) {
             Text("Sign Up")
         }
         Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = { authViewModel.signInWithEmailAndPassword(email, password) }) {
+        Button(
+            onClick = { authViewModel.signInWithEmailAndPassword(email, password) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+        ) {
             Text("Sign In")
         }
     }

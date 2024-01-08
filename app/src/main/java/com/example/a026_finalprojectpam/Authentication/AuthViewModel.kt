@@ -3,17 +3,24 @@ package com.example.a026_finalprojectpam.Authentication
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 class AuthViewModel : ViewModel() {
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
+
+    // Properti state untuk menampilkan pemberitahuan
+    private val _showSuccessMessage = MutableStateFlow<String?>(null)
+    val showSuccessMessage = _showSuccessMessage.asStateFlow()
 
     fun createUserWithEmailAndPassword(email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // Otentikasi sukses, Anda dapat menangani logika sesuai kebutuhan
+                    // Registrasi sukses, set pemberitahuan
+                    _showSuccessMessage.value = "Registrasi berhasil!"
                 } else {
-                    // Otentikasi gagal, tampilkan pesan kesalahan jika perlu
+                    // Registrasi gagal, tampilkan pesan kesalahan jika perlu
                 }
             }
     }
@@ -22,9 +29,10 @@ class AuthViewModel : ViewModel() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // Otentikasi sukses, Anda dapat menangani logika sesuai kebutuhan
+                    // Login sukses, set pemberitahuan
+                    _showSuccessMessage.value = "Login berhasil!"
                 } else {
-                    // Otentikasi gagal, tampilkan pesan kesalahan jika perlu
+                    // Login gagal, tampilkan pesan kesalahan jika perlu
                 }
             }
     }
@@ -33,4 +41,9 @@ class AuthViewModel : ViewModel() {
 
     // Misalnya, untuk mendapatkan pengguna saat ini:
     fun getCurrentUser(): FirebaseUser? = auth.currentUser
+
+    // Metode untuk membersihkan pemberitahuan setelah ditampilkan
+    fun clearSuccessMessage() {
+        _showSuccessMessage.value = null
+    }
 }
