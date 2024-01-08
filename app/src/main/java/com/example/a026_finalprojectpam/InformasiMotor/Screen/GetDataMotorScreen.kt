@@ -70,6 +70,7 @@ fun GetDataMotorScreen(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+
                 OutlinedTextField(
                     modifier = Modifier.fillMaxWidth(0.6f),
                     value = idMotor,
@@ -108,7 +109,7 @@ fun GetDataMotorScreen(
                     nmMotor = it
                 },
                 label = {
-                    Text(text = "Name")
+                    Text(text = "Nama Motor")
                 }
             )
 
@@ -119,7 +120,7 @@ fun GetDataMotorScreen(
                     pltMotor = it
                 },
                 label = {
-                    Text(text = "Profession")
+                    Text(text = "Nomer Plat Motor")
                 }
             )
 
@@ -130,7 +131,7 @@ fun GetDataMotorScreen(
                     wrnMotor = it
                 },
                 label = {
-                    Text(text = "Profession")
+                    Text(text = "Warna Motor")
                 }
             )
 
@@ -141,7 +142,7 @@ fun GetDataMotorScreen(
                     hrgMotor = it
                 },
                 label = {
-                    Text(text = "Profession")
+                    Text(text = "Harga Sewa/Hari")
                 }
             )
 
