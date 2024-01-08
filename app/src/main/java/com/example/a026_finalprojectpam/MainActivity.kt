@@ -4,13 +4,22 @@ import AuthenticationScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.rememberDrawerState
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.a026_finalprojectpam.InformasiMotor.MotorViewModel
+import com.example.a026_finalprojectpam.Navigasi.NavigasiHalaman
 import com.example.a026_finalprojectpam.ui.theme._026_FinalProjectPAMTheme
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var navController: NavHostController
+    private val motorViewModel: MotorViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -20,7 +29,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AuthenticationScreen()
+                    navController = rememberNavController()
+                    NavigasiHalaman(navController = navController, motorViewModel = MotorViewModel())
                 }
             }
         }
