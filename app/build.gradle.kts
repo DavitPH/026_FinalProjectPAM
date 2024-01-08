@@ -70,11 +70,17 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
-    implementation("androidx.navigation:navigation-compose:2.7.5")
 
+    //Kebutuhan Selama Coding
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
     implementation("com.jakewharton.timber:timber:5.0.1")
-
     implementation("com.firebaseui:firebase-ui-auth:7.2.0")
+
+
+    // firebase
+    implementation("com.google.firebase:firebase-firestore:24.10.0")
+
+    // navigation
+    implementation("androidx.navigation:navigation-compose:2.7.5")
 }
