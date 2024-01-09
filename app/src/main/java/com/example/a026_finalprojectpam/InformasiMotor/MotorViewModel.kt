@@ -9,9 +9,41 @@ import com.google.firebase.firestore.firestore
 import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.launch
 
 class MotorViewModel(): ViewModel(){
+
+    fun getAllData(): kotlinx.coroutines.flow.Flow<List<DataMotor>> = callbackFlow {
+        val fireStoreRef = Firebase.firestore.collection("motor")
+
+        val subscription = fireStoreRef.addSnapshotListener { value, error ->
+            if (error != null) {
+                // Handle error
+                close(error)
+                return@addSnapshotListener
+            }
+
+            if (value != null) {
+                val dataList = mutableListOf<DataMotor>()
+                for (doc in value.documents) {
+                    val dataMotor = doc.toObject(DataMotor::class.java)
+                    if (dataMotor != null) {
+                        dataList.add(dataMotor)
+                    }
+                }
+                trySend(dataList)
+            }
+        }
+
+        // Cancellation callback
+        awaitClose {
+            subscription.remove()
+        }
+    }
+        // Cancellation callback
+
 
     fun saveData(
         dataMotor: DataMotor,

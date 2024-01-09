@@ -76,6 +76,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
     implementation("com.jakewharton.timber:timber:5.0.1")
     implementation("com.firebaseui:firebase-ui-auth:7.2.0")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.0")
+
 
 
     // firebase
