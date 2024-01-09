@@ -24,13 +24,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.a026_finalprojectpam.InformasiMotor.MotorViewModel
+import com.example.a026_finalprojectpam.Navigasi.Screens
 import com.example.a026_finalprojectpam.R
 import com.example.a026_finalprojectpam.ui.theme._026_FinalProjectPAMTheme
 
 @Composable
-fun HomeScreen(onNextButtonClicked1: () -> Unit,
-                onNextButtonClicked2: () -> Unit)
-{
+fun HomeScreen(
+    navController: NavController,
+) {
     val image = painterResource(id = R.drawable.logo_motor)
 
     Column(modifier = Modifier,
@@ -74,24 +79,26 @@ fun HomeScreen(onNextButtonClicked1: () -> Unit,
             horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_medium)),
             verticalAlignment = Alignment.Bottom
         ){
-            Button(modifier = Modifier.weight(1f, false),
-                onClick = onNextButtonClicked1) {
+            Button(
+                modifier = Modifier.weight(1f, false),
+                onClick = { navController.navigate(Screens.MotorScreen.route) }
+            ) {
                 Text(stringResource(R.string.info_motor_button))
             }
-            Button(modifier = Modifier.weight(1f, false),
-                onClick = onNextButtonClicked2) {
+            Button(
+                modifier = Modifier.weight(1f, false),
+                onClick = {}
+            ) {
                 Text(stringResource(R.string.sewa_button))
             }
         }
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
 fun PreviewHalamanHome() {
     _026_FinalProjectPAMTheme {
-        HomeScreen(onNextButtonClicked1 = {},
-            onNextButtonClicked2 = {})
+        HomeScreen(navController = rememberNavController())
     }
 }

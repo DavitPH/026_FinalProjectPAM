@@ -1,9 +1,11 @@
 package com.example.a026_finalprojectpam.Navigasi
 
+import AuthenticationScreen
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.a026_finalprojectpam.Authentication.AuthViewModel
 import com.example.a026_finalprojectpam.InformasiMotor.MotorViewModel
 import com.example.a026_finalprojectpam.InformasiMotor.Screen.GetDataMotorScreen
 import com.example.a026_finalprojectpam.InformasiMotor.Screen.AddDataMotorScreen
@@ -12,12 +14,18 @@ import com.example.a026_finalprojectpam.InformasiMotor.Screen.MotorScreen
 @Composable
 fun NavigasiHalaman(
     navController: NavHostController,
-    motorViewModel: MotorViewModel
+    motorViewModel: MotorViewModel,
+    authViewModel: AuthViewModel,
 ){
     NavHost(
         navController = navController,
-        startDestination = Screens.MotorScreen.route
+        startDestination = Screens.AuthenticationScreen.route
     ) {
+        composable(
+            route = Screens.AuthenticationScreen.route
+        ) {
+            AuthenticationScreen(navController = navController, authViewModel = authViewModel)
+        }
         // main screen
         composable(
             route = Screens.MotorScreen.route

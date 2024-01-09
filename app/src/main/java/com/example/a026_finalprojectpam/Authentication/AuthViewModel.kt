@@ -13,6 +13,10 @@ class AuthViewModel : ViewModel() {
     private val _showSuccessMessage = MutableStateFlow<String?>(null)
     val showSuccessMessage = _showSuccessMessage.asStateFlow()
 
+    private val _errorMessage = MutableStateFlow<String?>(null)
+    val errorMessage = _errorMessage.asStateFlow()
+
+
     fun createUserWithEmailAndPassword(email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
@@ -32,18 +36,11 @@ class AuthViewModel : ViewModel() {
                     // Login sukses, set pemberitahuan
                     _showSuccessMessage.value = "Login berhasil!"
                 } else {
-                    // Login gagal, tampilkan pesan kesalahan jika perlu
+                    // Login gagal, set pesan kesalahan
+                    _errorMessage.value = task.exception?.message ?: "Login gagal."
                 }
             }
     }
-
-    // Metode lainnya sesuai kebutuhan, seperti pengiriman email verifikasi, cek status otentikasi, dll.
-
-    // Misalnya, untuk mendapatkan pengguna saat ini:
     fun getCurrentUser(): FirebaseUser? = auth.currentUser
 
-    // Metode untuk membersihkan pemberitahuan setelah ditampilkan
-    fun clearSuccessMessage() {
-        _showSuccessMessage.value = null
-    }
 }
