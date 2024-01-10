@@ -6,4 +6,8 @@ sealed class Screens(val route: String) {
     object AddDataMotorScreen: Screens(route = "add_data_motor_screen")
     object AuthenticationScreen : Screens(route = "auth_screen") // Tambahkan opsi untuk AuthScreen
     object HomeScreen : Screens(route = "home_screen")
+    object SewaScreen: Screens(route = "sewa_screen")
+    object GetDataSewaScreen: Screens(route = "get_data_Sewa_screen")
+    object AddDataSewaScreen: Screens(route = "add_data_Sewa_screen")
+
 }

@@ -30,7 +30,7 @@ import com.example.a026_finalprojectpam.PenyewaanMotor.SewaViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GetDataMotorScreen(
+fun GetDataSewaScreen(
     navController: NavController,
     sewaViewModel: SewaViewModel,
 ){
