@@ -49,7 +49,7 @@ class SewaViewModel() : ViewModel() {
     ) = CoroutineScope(Dispatchers.IO).launch {
 
         val fireStoreRef = Firebase.firestore
-            .collection("user")
+            .collection("sewa")
             .document(dataSewa.idSewa)
 
         try {
@@ -63,22 +63,22 @@ class SewaViewModel() : ViewModel() {
     }
 
     fun retrieveData(
-        userID: String,
+        idSewa: String,
         context: Context,
         data: (DataSewa) -> Unit
     ) = CoroutineScope(Dispatchers.IO).launch {
 
         val fireStoreRef = Firebase.firestore
-            .collection("user")
-            .document(userID)
+            .collection("sewa")
+            .document(idSewa)
 
         try {
             fireStoreRef.get()
                 .addOnSuccessListener {
                     // for getting single or particular document
                     if (it.exists()) {
-                        val userData = it.toObject<DataSewa>()!!
-                        data(userData)
+                        val dataSewa = it.toObject<DataSewa>()!!
+                        data(dataSewa)
                     } else {
                         Toast.makeText(context, "No User Data Found", Toast.LENGTH_SHORT).show()
                     }
@@ -89,14 +89,14 @@ class SewaViewModel() : ViewModel() {
     }
 
     fun deleteData(
-        userID: String,
+        idSewa: String,
         context: Context,
         navController: NavController,
     ) = CoroutineScope(Dispatchers.IO).launch {
 
         val fireStoreRef = Firebase.firestore
-            .collection("user")
-            .document(userID)
+            .collection("sewa")
+            .document(idSewa)
 
         try {
             fireStoreRef.delete()
