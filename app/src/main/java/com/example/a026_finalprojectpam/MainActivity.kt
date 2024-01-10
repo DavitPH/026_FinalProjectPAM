@@ -13,6 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.a026_finalprojectpam.Authentication.AuthViewModel
 import com.example.a026_finalprojectpam.InformasiMotor.MotorViewModel
 import com.example.a026_finalprojectpam.Navigasi.NavigasiHalaman
+import com.example.a026_finalprojectpam.PenyewaanMotor.SewaViewModel
 import com.example.a026_finalprojectpam.ui.theme._026_FinalProjectPAMTheme
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
@@ -22,6 +23,7 @@ class MainActivity : ComponentActivity() {
     val db = Firebase.firestore
     private lateinit var navController: NavHostController
     private val motorViewModel: MotorViewModel by viewModels()
+    private val sewaViewModel: SewaViewModel by viewModels()
     private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +39,9 @@ class MainActivity : ComponentActivity() {
                     NavigasiHalaman(
                         navController = navController,
                         motorViewModel = motorViewModel,
-                        authViewModel = authViewModel
+                        sewaViewModel = sewaViewModel,
+                        authViewModel = authViewModel,
+
                     )
                 }
             }

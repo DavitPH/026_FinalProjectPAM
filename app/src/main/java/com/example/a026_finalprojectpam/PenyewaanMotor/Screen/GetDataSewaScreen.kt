@@ -74,12 +74,12 @@ fun GetDataSewaScreen(
 
                 OutlinedTextField(
                     modifier = Modifier.fillMaxWidth(0.6f),
-                    value = idMotor,
+                    value = idSewa,
                     onValueChange = {
-                        idMotor = it
+                        idSewa = it
                     },
                     label = {
-                        Text(text = "ID Motor")
+                        Text(text = "ID Penyewaan")
                     }
                 )
                 // get user data Button

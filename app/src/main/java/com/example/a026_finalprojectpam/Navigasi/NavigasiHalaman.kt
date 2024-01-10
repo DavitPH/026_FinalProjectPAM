@@ -24,7 +24,7 @@ fun NavigasiHalaman(
 ){
     NavHost(
         navController = navController,
-        startDestination = Screens.AuthenticationScreen.route
+        startDestination = Screens.SewaScreen.route
     ) {
         composable(
             route = Screens.AuthenticationScreen.route

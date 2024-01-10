@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.a026_finalprojectpam.Navigasi.Screens
 import com.example.a026_finalprojectpam.PenyewaanMotor.DataSewa
 import com.example.a026_finalprojectpam.PenyewaanMotor.SewaViewModel
 
@@ -70,13 +71,13 @@ fun SewaScreen(
                 }
 
                 OutlinedButton(
-                    onClick = { },
+                    onClick = {navController.navigate(route = Screens.AddDataSewaScreen.route) },
                 ) {
                     Text(text = "Add Data Penyewaan")
                 }
 
                 OutlinedButton(
-                    onClick = {},
+                    onClick = {navController.navigate(route = Screens.GetDataSewaScreen.route)},
                 ) {
                     Text(text = "Get Data Penyewaan")
                 }
