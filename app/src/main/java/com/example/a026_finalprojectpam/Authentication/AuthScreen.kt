@@ -23,6 +23,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.a026_finalprojectpam.Navigasi.Screens
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -58,8 +59,19 @@ fun AuthScreen(navController: NavController,
             Text("Sign Up")
         }
         Spacer(modifier = Modifier.height(8.dp))
-        Button(onClick = { authViewModel.signInWithEmailAndPassword(email, password) }) {
+        Button(onClick = {
+            authViewModel.signInWithEmailAndPassword(email, password,
+                onSuccess = {
+                    // Authentication successful, navigate to the desired screen
+                    navController.navigate(Screens.HomeScreen.route)
+                },
+                onError = { errorMessage ->
+                    // Show an error message to the user
+                    showToastMessage = errorMessage
+                })
+        }) {
             Text("Sign In")
         }
+
     }
 }

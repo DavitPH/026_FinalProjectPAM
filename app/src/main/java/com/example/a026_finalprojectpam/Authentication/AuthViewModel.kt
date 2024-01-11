@@ -1,5 +1,6 @@
 package com.example.a026_finalprojectpam.Authentication
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -18,13 +19,16 @@ class AuthViewModel : ViewModel() {
             }
     }
 
-    fun signInWithEmailAndPassword(email: String, password: String) {
+    fun signInWithEmailAndPassword(email: String, password: String, onSuccess: () -> Unit, onError: (String) -> Unit) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // Otentikasi sukses, Anda dapat menangani logika sesuai kebutuhan
+                    // Authentication successful
+                    onSuccess.invoke()
                 } else {
-                    // Otentikasi gagal, tampilkan pesan kesalahan jika perlu
+                    // Authentication failed, log the error message
+                    Log.e("AuthViewModel", "signInWithEmailAndPassword failed: ${task.exception?.message}")
+                    onError.invoke("Authentication failed. Check your email and password.")
                 }
             }
     }
