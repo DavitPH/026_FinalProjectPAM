@@ -7,8 +7,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
@@ -35,8 +39,22 @@ import com.example.a026_finalprojectpam.ui.theme._026_FinalProjectPAMTheme
 @Composable
 fun HomeScreen(
     navController: NavController,
+    homeViewModel: HomeViewModel
 ) {
     val image = painterResource(id = R.drawable.logo_motor)
+
+    Row(
+        modifier = Modifier
+            .padding(start = 15.dp, top = 15.dp)
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.Start
+    ) {
+        IconButton(
+            onClick = { navController.popBackStack() }
+        ) {
+            Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "back_button")
+        }
+    }
 
     Column(modifier = Modifier,
         verticalArrangement = Arrangement.SpaceBetween)
@@ -87,18 +105,10 @@ fun HomeScreen(
             }
             Button(
                 modifier = Modifier.weight(1f, false),
-                onClick = {}
+                onClick = {navController.navigate(Screens.SewaScreen.route)}
             ) {
                 Text(stringResource(R.string.sewa_button))
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewHalamanHome() {
-    _026_FinalProjectPAMTheme {
-        HomeScreen(navController = rememberNavController())
     }
 }

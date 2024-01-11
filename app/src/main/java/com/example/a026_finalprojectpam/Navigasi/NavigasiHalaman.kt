@@ -1,11 +1,12 @@
 package com.example.a026_finalprojectpam.Navigasi
 
-import AuthenticationScreen
+
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.a026_finalprojectpam.Authentication.AuthViewModel
+import com.example.a026_finalprojectpam.HomePage.HomeScreen
+import com.example.a026_finalprojectpam.HomePage.HomeViewModel
 import com.example.a026_finalprojectpam.InformasiMotor.MotorViewModel
 import com.example.a026_finalprojectpam.InformasiMotor.Screen.GetDataMotorScreen
 import com.example.a026_finalprojectpam.InformasiMotor.Screen.AddDataMotorScreen
@@ -19,17 +20,19 @@ import com.example.a026_finalprojectpam.PenyewaanMotor.SewaViewModel
 fun NavigasiHalaman(
     navController: NavHostController,
     motorViewModel: MotorViewModel,
-    authViewModel: AuthViewModel,
     sewaViewModel: SewaViewModel,
+    homeViewModel: HomeViewModel
+
 ){
     NavHost(
         navController = navController,
-        startDestination = Screens.SewaScreen.route
+        startDestination = Screens.HomeScreen.route
     ) {
+
         composable(
-            route = Screens.AuthenticationScreen.route
+            route = Screens.HomeScreen.route
         ) {
-            AuthenticationScreen(navController = navController, authViewModel = authViewModel)
+            HomeScreen(navController = navController, homeViewModel = homeViewModel)
         }
         // main screen
         composable(

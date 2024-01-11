@@ -10,7 +10,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.a026_finalprojectpam.Authentication.AuthViewModel
+import com.example.a026_finalprojectpam.HomePage.HomeViewModel
 import com.example.a026_finalprojectpam.InformasiMotor.MotorViewModel
 import com.example.a026_finalprojectpam.Navigasi.NavigasiHalaman
 import com.example.a026_finalprojectpam.PenyewaanMotor.SewaViewModel
@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var navController: NavHostController
     private val motorViewModel: MotorViewModel by viewModels()
     private val sewaViewModel: SewaViewModel by viewModels()
-    private val authViewModel: AuthViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +40,7 @@ class MainActivity : ComponentActivity() {
                         navController = navController,
                         motorViewModel = motorViewModel,
                         sewaViewModel = sewaViewModel,
-                        authViewModel = authViewModel,
-
+                        homeViewModel = homeViewModel
                     )
                 }
             }
