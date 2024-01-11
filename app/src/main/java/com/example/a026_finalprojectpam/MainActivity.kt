@@ -10,11 +10,13 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.a026_finalprojectpam.Authentication.AuthViewModel
 import com.example.a026_finalprojectpam.HomePage.HomeViewModel
 import com.example.a026_finalprojectpam.InformasiMotor.MotorViewModel
 import com.example.a026_finalprojectpam.Navigasi.NavigasiHalaman
 import com.example.a026_finalprojectpam.PenyewaanMotor.SewaViewModel
 import com.example.a026_finalprojectpam.ui.theme._026_FinalProjectPAMTheme
+import com.google.android.gms.auth.api.Auth
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 
@@ -25,6 +27,8 @@ class MainActivity : ComponentActivity() {
     private val motorViewModel: MotorViewModel by viewModels()
     private val sewaViewModel: SewaViewModel by viewModels()
     private val homeViewModel: HomeViewModel by viewModels()
+    private val authViewModel: AuthViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +45,7 @@ class MainActivity : ComponentActivity() {
                         motorViewModel = motorViewModel,
                         sewaViewModel = sewaViewModel,
                         homeViewModel = homeViewModel,
+                        authViewModel = authViewModel,
                     )
                 }
             }

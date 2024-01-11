@@ -5,6 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.a026_finalprojectpam.Authentication.AuthScreen
+import com.example.a026_finalprojectpam.Authentication.AuthViewModel
 import com.example.a026_finalprojectpam.HomePage.HomeScreen
 import com.example.a026_finalprojectpam.HomePage.HomeViewModel
 import com.example.a026_finalprojectpam.InformasiMotor.MotorViewModel
@@ -22,13 +24,24 @@ fun NavigasiHalaman(
     motorViewModel: MotorViewModel,
     sewaViewModel: SewaViewModel,
     homeViewModel: HomeViewModel,
+    authViewModel: AuthViewModel,
 
 ){
     NavHost(
         navController = navController,
-        startDestination = Screens.HomeScreen.route
+        startDestination = Screens.AuthScreen.route
     ) {
 
+        composable(route = Screens.AuthScreen.route) {
+            AuthScreen(
+                navController = navController,
+                authViewModel = authViewModel,
+                onLoginSuccess = {
+                    // Handle success, e.g., navigate to the home screen
+                    navController.navigate(Screens.HomeScreen.route)
+                }
+            )
+        }
         composable(
             route = Screens.HomeScreen.route
         ) {
