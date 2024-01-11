@@ -12,6 +12,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -19,8 +20,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.a026_finalprojectpam.Navigasi.Screens
@@ -28,12 +32,13 @@ import com.example.a026_finalprojectpam.Navigasi.Screens
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AuthScreen(navController: NavController,
-               authViewModel: AuthViewModel = viewModel()) {
+fun AuthScreen(navController: NavController, authViewModel: AuthViewModel = viewModel()) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
     var showToastMessage by remember { mutableStateOf<String?>(null) }
+
+    val blueColor = Color(0xFF2196F3) // Warna biru
 
     Column(
         modifier = Modifier
@@ -42,23 +47,41 @@ fun AuthScreen(navController: NavController,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        // Judul halaman dengan nuansa biru
+        Text(
+            text = "Login",
+            color = blueColor,
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+
+        // Input Email
         TextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Email") }
+            label = { Text("Email") },
+            colors = TextFieldDefaults.outlinedTextFieldColors(focusedLabelColor = blueColor)
         )
         Spacer(modifier = Modifier.height(8.dp))
+
+        // Input Password
         TextField(
             value = password,
             onValueChange = { password = it },
             label = { Text("Password") },
-            visualTransformation = PasswordVisualTransformation()
+            visualTransformation = PasswordVisualTransformation(),
+            colors = TextFieldDefaults.outlinedTextFieldColors(focusedLabelColor = blueColor)
         )
         Spacer(modifier = Modifier.height(16.dp))
+
+        // Tombol Sign Up
         Button(onClick = { authViewModel.createUserWithEmailAndPassword(email, password) }) {
             Text("Sign Up")
         }
         Spacer(modifier = Modifier.height(8.dp))
+
+        // Tombol Sign In
         Button(onClick = {
             authViewModel.signInWithEmailAndPassword(email, password,
                 onSuccess = {
@@ -70,8 +93,7 @@ fun AuthScreen(navController: NavController,
                     showToastMessage = errorMessage
                 })
         }) {
-            Text("Sign In")
+            Text("Sign In", color = Color.White) // Memberi warna teks putih
         }
-
     }
 }
