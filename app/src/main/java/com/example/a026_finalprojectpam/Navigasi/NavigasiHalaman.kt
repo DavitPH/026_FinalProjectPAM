@@ -36,10 +36,6 @@ fun NavigasiHalaman(
             AuthScreen(
                 navController = navController,
                 authViewModel = authViewModel,
-                onLoginSuccess = {
-                    // Handle success, e.g., navigate to the home screen
-                    navController.navigate(Screens.HomeScreen.route)
-                }
             )
         }
         composable(

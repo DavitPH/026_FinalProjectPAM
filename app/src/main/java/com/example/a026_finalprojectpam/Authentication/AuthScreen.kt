@@ -23,13 +23,11 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.a026_finalprojectpam.Navigasi.Screens
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AuthScreen(navController: NavController,
-               onLoginSuccess: () -> Unit,
                authViewModel: AuthViewModel = viewModel()) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -60,13 +58,7 @@ fun AuthScreen(navController: NavController,
             Text("Sign Up")
         }
         Spacer(modifier = Modifier.height(8.dp))
-        Button(
-            onClick = {
-                authViewModel.signInWithEmailAndPassword(email, password)
-                onLoginSuccess() // Execute the callback
-                navController.navigate(Screens.HomeScreen.route) // Navigate to the home screen
-            },
-        ) {
+        Button(onClick = { authViewModel.signInWithEmailAndPassword(email, password) }) {
             Text("Sign In")
         }
     }
