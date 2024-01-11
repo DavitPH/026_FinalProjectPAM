@@ -21,7 +21,7 @@ fun NavigasiHalaman(
     navController: NavHostController,
     motorViewModel: MotorViewModel,
     sewaViewModel: SewaViewModel,
-    homeViewModel: HomeViewModel
+    homeViewModel: HomeViewModel,
 
 ){
     NavHost(

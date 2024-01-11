@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
                         navController = navController,
                         motorViewModel = motorViewModel,
                         sewaViewModel = sewaViewModel,
-                        homeViewModel = homeViewModel
+                        homeViewModel = homeViewModel,
                     )
                 }
             }
